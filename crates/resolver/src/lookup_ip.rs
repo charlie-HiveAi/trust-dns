@@ -269,7 +269,9 @@ where
         };
     }
 
-    client.lookup(query, options).await
+    let result = client.lookup(query.clone(), options).await;
+    println!("Caching Client Lookup Result for query {query:#?}: {result:#?}");
+    result
 }
 
 /// queries only for A records
