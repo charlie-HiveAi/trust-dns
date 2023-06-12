@@ -171,7 +171,9 @@ where
         let is_dnssec = client.client.is_verifying_dnssec();
 
         // first transition any polling that is needed (mutable refs...)
-        if let Some(cached_lookup) = client.lookup_from_cache(&query) {
+        let cached_result = client.lookup_from_cache(&query);
+        println!("Cached result {cached_result:#?}");
+        if let Some (cached_lookup) = cached_result {
             return cached_lookup;
         };
 
